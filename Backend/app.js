@@ -1,3 +1,4 @@
+dotenv.config({path:"./config/config.env"});
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
@@ -8,12 +9,11 @@ import jobRouter from './routes/jobRouter.js';
 import applicationRouter from './routes/applicationRouter.js';
 import {errorMiddleware} from "./middlewares/error.js"
 import {dbConnection} from './database/dbConnection.js'
-dotenv.config({path:"./config/config.env"});
 const app=express();
 
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: `${process.env.FRONTEND_URL}`,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
@@ -31,5 +31,6 @@ app.use(
   app.use("/api/v1/application",applicationRouter);
   app.use("/api/v1/job",jobRouter);
   dbConnection();
+
   app.use(errorMiddleware);
 export default app;
