@@ -2,7 +2,7 @@ import app from "./app.js";
 import cloudinary from "cloudinary";
 import cors from "cors";
 
-const port=process.env.PORT || 3000;
+const port=process.env.PORT ;
 
 app.use(cors({
     origin: process.env.NODE_ENV === 'production' ? 
