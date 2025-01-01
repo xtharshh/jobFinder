@@ -21,7 +21,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        `${process.env.FRONTEND_URL}/api/v1/user/register`,
+        "https://job-finder-silk.vercel.app/api/v1/user/register",
         { name, phone, email, role, password },
         {
           headers: {
